@@ -1,0 +1,812 @@
+/* Local Poppins Fonts */
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Enhanced Color Palette with Gradients */
+    --primary-orange: #FF5900;
+    --primary-light: #FF8237;
+    --warm-peach: #FFAA6E;
+    --soft-cream: #FFD3A5;
+    --light-yellow: #FFFBDC;
+    
+    /* Beautiful Gradient Combinations */
+    --gradient-sunset: linear-gradient(135deg, #FF5900 0%, #FF8237 50%, #FFAA6E 100%);
+    --gradient-warm: linear-gradient(135deg, #FFAA6E 0%, #FFD3A5 100%);
+    --gradient-glow: linear-gradient(135deg, #FF8237 0%, #FF5900 100%);
+    --gradient-soft: linear-gradient(135deg, #FFD3A5 0%, #FFFBDC 100%);
+    --gradient-vibrant: linear-gradient(135deg, #FF5900 0%, #FFAA6E 100%);
+    --gradient-radial: radial-gradient(circle at top right, #FF8237 0%, #FF5900 100%);
+    
+    /* Background & Text */
+    --background-cream: #FFFBF0;
+    --text-dark: #2c1810;
+    --text-light: #8b4513;
+    --white: #FFFFFF;
+    
+    /* Component Colors */
+    --footer-cream: #FFD3A5;
+    --card-bg: #FFFFFF;
+    --shadow-color: rgba(255, 89, 0, 0.15);
+    
+    /* Shadows & Effects */
+    --shadow-light: 0 4px 20px var(--shadow-color);
+    --shadow-medium: 0 8px 30px var(--shadow-color);
+    --shadow-heavy: 0 12px 40px rgba(255, 89, 0, 0.25);
+    --shadow-glow: 0 0 30px rgba(255, 130, 55, 0.3);
+    
+    /* Animation & Interaction */
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-cream);
+    min-height: 100vh;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Navigation */
+.header {
+    background-color: var(--white);
+    box-shadow: var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 251, 247, 0.95);
+    z-index: -1;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-orange);
+    text-decoration: none;
+}
+
+.logo img {
+    height: 75px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1.5rem;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-glow);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--primary-orange);
+}
+
+.notification-container {
+    position: relative;
+}
+
+.notification-bell {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.notification-bell:hover {
+    background: var(--soft-cream);
+    color: var(--primary-orange);
+    transform: scale(1.1);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--gradient-glow);
+    margin: 3px 0;
+    transition: var(--transition);
+    border-radius: 3px;
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+}
+
+/* Schedule Container */
+.schedule-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Schedule Header */
+.schedule-header {
+    background: var(--gradient-sunset);
+    padding: 2.5rem 0;
+    text-align: center;
+    border-radius: 16px 16px 0 0;
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.schedule-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-10%, -10%); }
+}
+
+.schedule-header h1 {
+    color: white;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Schedule Form */
+.schedule-form {
+    background: var(--gradient-soft);
+    padding: 4rem 3rem;
+    border-radius: 0 0 16px 16px;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+}
+
+.form-section {
+    margin-bottom: 3rem;
+}
+
+.form-section:last-child {
+    margin-bottom: 0;
+}
+
+/* Grams Control */
+.grams-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.control-btn {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-warm);
+    border: none;
+    border-radius: 16px;
+    font-size: 2rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: var(--gradient-vibrant);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+    color: white;
+}
+
+.control-btn:active {
+    transform: translateY(-2px);
+}
+
+.grams-display {
+    background: white;
+    padding: 1.5rem 3rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 200px;
+    border: 3px solid var(--warm-peach);
+}
+
+.grams-display input {
+    background: transparent;
+    border: none;
+    font-size: 3rem;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.grams-display input:focus {
+    outline: none;
+}
+
+.grams-label {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Time Control */
+.time-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background: white;
+    padding: 1.5rem 3rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    max-width: 600px;
+    margin: 0 auto;
+    border: 3px solid var(--warm-peach);
+}
+
+.time-arrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.period-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.time-arrow-btn,
+.period-arrow-btn {
+    background: var(--gradient-glow);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-light);
+}
+
+.time-arrow-btn:hover,
+.period-arrow-btn:hover {
+    background: var(--gradient-vibrant);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-glow);
+}
+
+.time-arrow-btn:active,
+.period-arrow-btn:active {
+    transform: scale(0.95);
+}
+
+.time-control input[type="text"] {
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    text-align: center;
+    width: 150px;
+}
+
+.time-control input[type="text"]:focus {
+    outline: none;
+}
+
+.time-period {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Days Selector */
+.days-selector {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.day-btn {
+    width: 70px;
+    height: 70px;
+    background: white;
+    border: 3px solid var(--warm-peach);
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-light);
+}
+
+.day-btn:hover {
+    background: var(--gradient-warm);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--primary-orange);
+}
+
+.day-btn.active {
+    background: var(--gradient-sunset);
+    color: white;
+    border-color: var(--primary-orange);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.action-btn {
+    padding: 1.5rem 4rem;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-light);
+    font-family: 'Poppins', sans-serif;
+}
+
+.confirm-btn {
+    background: var(--gradient-sunset);
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-btn:hover {
+    background: var(--gradient-vibrant);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: var(--shadow-glow);
+}
+
+.cancel-btn {
+    background: white;
+    color: var(--text-dark);
+    border: 3px solid var(--warm-peach);
+}
+
+.cancel-btn:hover {
+    background: var(--gradient-warm);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--primary-light);
+}
+
+.action-btn:active {
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    background: var(--gradient-soft);
+    padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
+    margin-top: auto;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0 0 Q25 5 50 0 T100 0 V20 H0 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+    background-size: 100px 20px;
+    background-repeat: repeat-x;
+    animation: wave 15s linear infinite reverse;
+}
+
+@keyframes wave {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100px); }
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-content p {
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .schedule-header h1 {
+        font-size: 2.3rem;
+    }
+
+    .schedule-form {
+        padding: 3rem 2rem;
+    }
+
+    .grams-display input {
+        font-size: 2.5rem;
+    }
+
+    .time-control input[type="time"],
+    .time-period {
+        font-size: 2rem;
+    }
+
+    .day-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.3rem;
+    }
+
+    .action-btn {
+        padding: 1.3rem 3rem;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+
+    .schedule-container {
+        padding: 0 1rem;
+    }
+
+    .schedule-header {
+        padding: 2rem 0;
+    }
+
+    .schedule-header h1 {
+        font-size: 2rem;
+    }
+
+    .schedule-form {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .form-section {
+        margin-bottom: 2rem;
+    }
+
+    .grams-control {
+        gap: 1rem;
+    }
+
+    .control-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .grams-display {
+        padding: 1rem 2rem;
+        min-width: 150px;
+    }
+
+    .grams-display input {
+        font-size: 2rem;
+    }
+
+    .grams-label {
+        font-size: 1.1rem;
+    }
+
+    .time-control {
+        padding: 1rem 2rem;
+        gap: 1rem;
+    }
+
+    .time-control input[type="time"],
+    .time-period {
+        font-size: 1.8rem;
+    }
+
+    .time-arrow-btn,
+    .period-arrow-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .days-selector {
+        gap: 0.8rem;
+    }
+
+    .day-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+    }
+
+    .action-buttons {
+        gap: 1rem;
+    }
+
+    .action-btn {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.3rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .schedule-form {
+        padding: 2rem 1rem;
+    }
+
+    .grams-control {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .control-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+
+    .grams-display {
+        min-width: 120px;
+    }
+
+    .grams-display input {
+        font-size: 1.8rem;
+    }
+
+    .time-control input[type="time"],
+    .time-period {
+        font-size: 1.5rem;
+    }
+
+    .time-arrow-btn,
+    .period-arrow-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .day-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .action-btn {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--soft-cream);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-glow);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-orange);
+}
+
+/* Selection color */
+::selection {
+    background: var(--warm-peach);
+    color: white;        
+}
+
+/* Focus states for accessibility */
+button:focus, a:focus, input:focus {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+/* Remove default time input styles */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(27%) sepia(12%) saturate(1528%) hue-rotate(349deg) brightness(96%) contrast(90%);
+    cursor: pointer;
+}
+
+/* Remove spinners from number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}

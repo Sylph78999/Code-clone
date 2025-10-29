@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feeder Modules - Animal Haven</title>
+    <link rel="stylesheet" href="/static/css/feeders.css">
+    <link rel="stylesheet" href="./static/fontawesome.v6/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/static/images/animal-haven.png" alt="Animal Haven Logo">
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="/" class="active">Feeders</a></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/system-info">System Info</a></li>
+                    <li class="notification-container">
+                        <button class="notification-bell" onclick="window.location.href='/logs'">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="feeders-container">
+            <!-- Header -->
+            <div class="feeders-header">
+                <h1>Feeder Modules</h1>
+            </div>
+
+            <!-- Add Feeder Button -->
+            <div class="add-feeder-section">
+                <button class="btn-add-feeder" id="showAddFormBtn">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Add New Feeder</span>
+                </button>
+            </div>
+
+            <!-- Add Feeder Form (Hidden by default) -->
+            <div class="add-feeder-form" id="addFeederForm" style="display:none;">
+                <div class="form-content">
+                    <h3>
+                        <i class="fas fa-plus-square"></i>
+                        Add New Feeder Module
+                    </h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="feederName">
+                                <i class="fas fa-tag"></i>
+                                Feeder Name
+                            </label>
+                            <input 
+                                type="text" 
+                                id="feederName" 
+                                placeholder="e.g. Module 1, Main Hall Feeder"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="feederIP">
+                                <i class="fas fa-network-wired"></i>
+                                IP Address
+                            </label>
+                            <input 
+                                type="text" 
+                                id="feederIP" 
+                                placeholder="e.g. 192.168.254.4"
+                                required
+                            >
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-save" onclick="addFeeder()">
+                            <i class="fas fa-check"></i>
+                            Save Feeder
+                        </button>
+                        <button class="btn-cancel" onclick="hideAddForm()">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feeders List -->
+            <div class="feeders-list" id="feedersList">
+                <!-- Feeders will be loaded here dynamically -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display:none;">
+                <i class="fas fa-inbox"></i>
+                <h3>No Feeders Added Yet</h3>
+                <p>Add your first feeder module to get started</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Tails of Freedom Animal Haven. All rights reserved.</p>
+                <div class="footer-links"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/feeders.js"></script>
+</body>
+</html>

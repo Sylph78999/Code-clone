@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Haven - Notification Panel</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/static/css/manual-dashbaord.css">
+    <link rel="stylesheet" href="./static/fontawesome.v6/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/static/images/animal-haven.png" alt="Animal Haven Logo">
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="/">Feeders></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/system-info">System Info</a></li>
+                    <li class="notification-container">
+                        <button class="notification-bell" onclick="window.location.href='/logs'">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="dashboard-container">
+            <!-- Stats Cards Row -->
+            <div class="stats-row">
+                <div class="stat-card primary">
+                    <div class="stat-content">
+                        <div class="stat-label">Total Feedings Today</div>
+                        <div class="stat-value" id="total-feedings">0</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-label">Food Dispensed (kg)</div>
+                        <div class="stat-value" id="food-dispensed">0.0</div>
+                    </div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-content">
+                        <div class="stat-label">System Status</div>
+                        <div class="stat-value status-online">Online</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="main-grid">
+                <!-- Chart Section - Feeding Logs Table -->
+                <div class="chart-section">
+                    <div class="chart-header">
+                        <h3>Recent Feeding Logs</h3>
+                        <div class="chart-controls">
+                            <button class="time-btn active" data-filter="today">Today</button>
+                            <button class="time-btn" data-filter="week">This Week</button>
+                            <button class="delete-all-btn" id="delete-all-button">
+                                <i class="fas fa-trash-alt"></i> Delete All
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="logs-table">
+                            <thead>
+                                <tr>
+                                    <th>Module</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Amount (g)</th>
+                                    <th>Status</th>
+                                    <th>Source</th>
+                                    <th>Photo</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logsTableBody">
+                                <!-- Table will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- More Button -->
+                    <div class="more-section">
+                        <button class="more-btn" id="more-button" style="display: none;">
+                            <i class="fas fa-chevron-down"></i> Show More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pie Chart Section -->
+                <div class="pie-section">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text-dark);">Food Distribution</h3>
+                    <div class="pie-chart-container">
+                        <canvas id="pieChart" width="140" height="140"></canvas>
+                        <div class="pie-percentage" id="pie-percentage">0%</div>
+                    </div>
+
+                    <div class="pie-details">
+    <div class="detail-item">
+        <span class="legend-dot orange"></span>
+        <span id="food-dispensed-detail">Food Dispensed: 0.0kg</span>
+    </div>
+    <div class="detail-item">
+        <span class="legend-dot gray"></span>
+        <span id="food-remaining-detail">Remaining: 10.0kg</span>
+    </div>
+    <!-- NEW: Add this bullet point -->
+    <div class="detail-item">
+        <span class="legend-dot gray"></span>
+        <span id="current-weight-capacity">Current Weight Capacity: 0g</span>
+    </div>
+    <div class="detail-item">
+        <span style="font-size: 0.8rem; color: var(--text-gray);">Total Capacity: 10.0kg</span>
+    </div>
+</div>
+                </div>
+
+                <!-- Live Data Section -->
+                <div class="live-data-section">
+                    <div id="live-data-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Tails of Freedom Animal Haven. All rights reserved.</p>
+                <div class="footer-links"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Scripts in Order -->
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/live-data.js"></script>
+</body>
+</html>

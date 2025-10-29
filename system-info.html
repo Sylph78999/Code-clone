@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Info - Animal Haven</title>
+    <link rel="stylesheet" href="/static/css/system-info.css">
+    <link rel="stylesheet" href="./static/fontawesome.v6/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/animal-haven.png') }}" alt="Animal Haven Logo">
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="/">Feeders></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/system-info" class="active">System Info</a></li>
+                    <!-- Notification Bell -->
+                    <li class="notification-container">
+                        <button class="notification-bell" onclick="window.location.href='/logs'">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">System Information</h1>
+                <p class="hero-subtitle">Smart Feeder Monitoring System</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <div class="info-grid">
+                    <!-- System Description -->
+                    <div class="info-card">
+                        <div class="card-header">
+                            <i class="fas fa-microchip"></i>
+                            <h3>System Description</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="system-title">
+                                <h4>Smart Feeder Monitoring System</h4>
+                                <span class="version-badge">Version 1.0 (Prototype)</span>
+                            </div>
+                            <p>This system provides live monitoring of the automatic pet feeder using a local touchscreen interface. It includes a feeding schedule, food level sensor, and live camera feed capabilities.</p>
+                            <p><strong>Designed for:</strong> Tails of Freedom Animal Haven -- Silang, Cavite</p>
+                            <p><strong>Purpose:</strong> Internal use by shelter staff for efficient animal care management</p>
+                        </div>
+                    </div>
+
+                    <!-- User Guide -->
+                    <div class="info-card">
+                        <div class="card-header">
+                            <i class="fas fa-book-open"></i>
+                            <h3>User Guide</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="guide-steps">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>Tap <strong>"Dashboard"</strong> to view current feeder status and food levels</span>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span>Use <strong>"Feed Now"</strong> button for manual feeding when necessary</span>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <i class="fas fa-cog"></i>
+                                        <span>The feeder operates automatically based on the programmed schedule</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- System Status -->
+                    <div class="info-card">
+                        <div class="card-header">
+                            <i class="fas fa-server"></i>
+                            <h3>System Status</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="status-grid">
+                                <div class="status-item">
+                                    <div class="status-label">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Current Time</span>
+                                    </div>
+                                    <div class="status-value" id="current-time">--:--:--</div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-label">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>Date</span>
+                                    </div>
+                                    <div class="status-value" id="current-date">Loading...</div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-label">
+                                        <i class="fas fa-network-wired"></i>
+                                        <span>Local IP</span>
+                                    </div>
+                                    <div class="status-value">192.168.254.5:8080</div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-label">
+                                        <i class="fas fa-clock"></i>
+                                        <span>System Uptime</span>
+                                    </div>
+                                    <div class="status-value">24h 35m 12s</div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-label">
+                                        <i class="fas fa-wifi"></i>
+                                        <span>Connection</span>
+                                    </div>
+                                    <div class="status-value">
+                                        <span class="status-badge online">Online</span>
+                                    </div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-label">
+                                        <i class="fas fa-microchip"></i>
+                                        <span>Device Status</span>
+                                    </div>
+                                    <div class="status-value">
+                                        <span class="status-badge operational">Operational</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Information -->
+                    <div class="info-card">
+                        <div class="card-header">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Emergency Information</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="emergency-info">
+                                <div class="emergency-item">
+                                    <i class="fas fa-tools"></i>
+                                    <div>
+                                        <strong>Maintenance:</strong>
+                                        <p>Weekly cleaning schedule recommended. Check food levels daily and refill as needed.</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Tails of Freedom Animal Haven. All rights reserved.</p>
+                <div class="footer-links"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Update current time and date
+        function updateDateTime() {
+            const now = new Date();
+            const timeElement = document.getElementById('current-time');
+            const dateElement = document.getElementById('current-date');
+            
+            if (timeElement) {
+                timeElement.textContent = now.toLocaleTimeString();
+            }
+            
+            if (dateElement) {
+                dateElement.textContent = now.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+        }
+
+        // Update time every second
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        function goToDashboardActivity() {
+            // Navigate to dashboard page and scroll to activity section
+            window.location.href = "/dashboard#activity-section";
+        }
+    </script>
+</body>
+</html>

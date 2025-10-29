@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Haven - Feeding Dashboard</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/static/css/manual-dashbaord.css">
+    <link rel="stylesheet" href="./static/fontawesome.v6/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/static/images/animal-haven.png" alt="Animal Haven Logo">
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="/">Feeders></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/system-info">System Info</a></li>
+                    <li class="notification-container">
+                        <button class="notification-bell" onclick="window.location.href='/logs'">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="dashboard-container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1>Manual Dashboard</h1>
+            </div>
+
+            <!-- New Dispense Controls with Plus/Minus Buttons -->
+            <div class="dispense-controls-new">
+                <button class="control-btn minus-btn" onclick="window.dashboardManager.decreaseAmount()">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <div class="amount-display">
+                    <span id="current-amount-value">50</span><span class="gram-text">g</span>
+                </div>
+                <button class="control-btn plus-btn" onclick="window.dashboardManager.increaseAmount()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <!-- Feed Me Button Full Width -->
+            <div class="feed-me-full" id="feed-me-button-big">
+                <div class="feed-text">Feed Now</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Tails of Freedom Animal Haven. All rights reserved.</p>
+                <div class="footer-links"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Scripts in Order -->
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/live-data.js"></script>
+</body>
+</html>

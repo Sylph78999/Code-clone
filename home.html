@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Haven</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="./static/fontawesome.v6/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename= 'images/animal-haven.png') }}">
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                   <li><a href="/">Feeders</li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <!-- FIXED: Changed from /system_info to /system-info to match Flask route -->
+                    <li><a href="/system-info">System Info</a></li>
+                    <!-- Notification Bell -->
+                    <li class="notification-container">
+                        <button class="notification-bell" onclick="window.location.href='/logs'">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="home" class="hero">
+            <div class="container">
+                <h1 class="hero-title">Tails of Freedom Animal Haven</h1>
+                <p class="hero-subtitle">Rescue · ReHab · ReHome</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <div class="content-wrapper">
+                    <div class="content-left">
+                        <div class="section-tag">About Us</div>
+                        <h2>Tails of Freedom Animal Haven </h2>
+                        <p>Tails of Freedom Animal Haven is a dedicated animal shelter that rescues and rehabilitates stray, abandoned, and neglected dogs and cats. Driven by compassion and a strong sense of responsibility, the shelter provides these animals with a safe environment where they receive proper care, medical attention, and the love they deserve.</p>
+                        <p>Guided by the mission to Rescue, ReHab, and ReHome, Tails of Freedom works tirelessly to help animals recover from trauma and find forever homes. Beyond sheltering, the organization also raises awareness about responsible pet ownership and encourages the community to support humane treatment for all animals.</p>
+                    </div>
+                    <div class="content-right">
+                        <div class="image-gallery">
+                            <div class="gallery-container">
+                                <div class="gallery-item">
+                                    <img src="/static/images/animal1.jpg" alt="Animal 1">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/animal2.jpg" alt="Animal 2">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/animal3.jpg" alt="Animal 3">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/animal4.jpg" alt="Animal 4">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/animal5.jpg" alt="Animal 5">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog6.jpg" alt="Dog 6">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog7.jpg" alt="Dog 7">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog8.jpg" alt="Dog 8">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog9.jpg" alt="Dog 9">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog10.jpg" alt="Dog 10">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog11.jpg" alt="Dog 11">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog12.jpg" alt="Dog 12">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog13.jpg" alt="Dog 13">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog14.jpg" alt="Dog 14">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/static/images/dog15.jpg" alt="Dog 15">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2025 Tails of Freedom Animal Haven. All rights reserved.</p>
+                    <div class="footer-links"></div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            let currentImageIndex = 0;
+            const galleryContainer = document.querySelector('.gallery-container');
+            const totalImages = document.querySelectorAll('.gallery-item').length;
+            let autoSlideInterval;
+
+            
+
+            function showImage(index) {
+                // FIXED: Changed from -index * (25 / totalImages) to -index * 25
+                const translateX = -index * 25; // Move by 25% for each image
+                galleryContainer.style.transform = `translateX(${translateX}%)`; 
+            }
+
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                showImage(currentImageIndex);
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextImage, 2500); // Change image every 1 second
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            // Start auto-sliding when page loads
+            document.addEventListener('DOMContentLoaded', function() {
+                startAutoSlide();
+
+                // Pause on hover
+                const gallery = document.querySelector('.image-gallery');
+                gallery.addEventListener('mouseenter', stopAutoSlide);
+                gallery.addEventListener('mouseleave', startAutoSlide);
+            });
+
+            function goToDashboardActivity() {
+                // Navigate to dashboard page and scroll to activity section
+                window.location.href = '/dashboard#activity-section';
+            }
+        </script>
+    </body>
+</html>

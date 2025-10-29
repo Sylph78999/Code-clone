@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set New Schedule - Animal Haven</title>
+    <link rel="stylesheet" href="/static/css/automatic-dashboard.css">
+    <link rel="stylesheet" href="./static/fontawesome.v6/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/static/images/animal-haven.png" alt="Animal Haven Logo">
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="/">Feeders></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/system-info">System Info</a></li>
+                    <li class="notification-container">
+                        <button class="notification-bell" onclick="window.location.href='/logs'">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="schedule-container">
+            <!-- Header -->
+            <div class="schedule-header">
+                <h1>Set New Schedule</h1>
+            </div>
+
+            <!-- Schedule Form -->
+            <div class="schedule-form">
+                <!-- Grams Control -->
+                <div class="form-section">
+                    <div class="grams-control">
+                        <button class="control-btn minus-btn" id="decreaseGrams">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="grams-display">
+                            <input type="number" id="gramsInput" value="6" min="1" max="999">
+                            <span class="grams-label">Grams</span>
+                        </div>
+                        <button class="control-btn plus-btn" id="increaseGrams">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Time Selection -->
+                <div class="form-section">
+                    <div class="time-control">
+                        <div class="time-arrows">
+                            <button class="time-arrow-btn" id="timeUpBtn">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                            <button class="time-arrow-btn" id="timeDownBtn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <input type="text" id="timeInput" value="10:00" readonly>
+                        <div class="period-control">
+                            <button class="period-arrow-btn" id="periodUpBtn">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                            <span class="time-period" id="timePeriod">AM</span>
+                            <button class="period-arrow-btn" id="periodDownBtn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day Selection -->
+                <div class="form-section">
+                    <div class="days-selector">
+                        <button class="day-btn" data-day="S">S</button>
+                        <button class="day-btn" data-day="M">M</button>
+                        <button class="day-btn" data-day="T">T</button>
+                        <button class="day-btn" data-day="W">W</button>
+                        <button class="day-btn" data-day="Th">Th</button>
+                        <button class="day-btn" data-day="F">F</button>
+                        <button class="day-btn" data-day="S">S</button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="form-section">
+                    <div class="action-buttons">
+                        <button class="action-btn confirm-btn" id="confirmBtn">
+                            <span>Confirm</span>
+                        </button>
+                        <button class="action-btn cancel-btn" id="cancelBtn">
+                            <span>Cancel</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Tails of Freedom Animal Haven. All rights reserved.</p>
+                <div class="footer-links"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/auto-dashboard.js"></script>
+
+</body>
+</html>
